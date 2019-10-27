@@ -1,8 +1,8 @@
 <div *ngIf="brewery | async as brew">
     <h1>{{ brew.name }}</h1>
-    <p>State: {{ brew.state }}</p>
-    <p>City: {{ brew.city }}</p>
-    <p>Street: {{ brew.street }}</p>
-    <p>phone: {{ brew.phone }}</p>
-    <p>website: <a href="{{ brew.website_url }}">{{ brew.website_url }}</a></p>
+    <p *ngIf="brew.state">State: {{ brew.state }}</p>
+    <p *ngIf="brew.city">City: {{ brew.city }}</p>
+    <p *ngIf="brew.street">Street: {{ brew.street }}</p>
+    <p *ngIf="brew.city">phone: {{ brew.phone }}</p>
+    <p *ngIf="brew.website_url">website: <a href="{{ brew.website_url }}">{{ brew.website_url }}</a></p>
 </div>

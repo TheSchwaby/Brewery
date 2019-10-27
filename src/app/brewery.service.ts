@@ -14,8 +14,8 @@ export class BreweryService {
             return this.http.get<Brewery[]>(this.berewriesURL);
         }
 
-        getBreweryFromId(id: number) {
-            return this.http.get(this.berewriesURL + '/' + id);
+        getBreweryFromId(id: string) {
+            return this.http.get<Brewery>(this.berewriesURL + '/' + id);
         }
 
 }

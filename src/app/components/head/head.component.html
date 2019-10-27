@@ -1,4 +1,14 @@
-<div>
-    <p>head works!</p>
-
-</div>
+<mat-toolbar>
+    <span (click)="navToBreweries()">Breweries</span>
+    <mat-form-field>
+            <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto" [formControl]="searchBreweryCtrl">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+              <ng-container *ngIf="!isLoading">
+                <mat-option *ngFor="let brewery of filteredBrewery | slice:0:5; let i=index" [value]="brewery.name">
+                  <span (click)="navToId(brewery)"><b>{{brewery.name}}</b></span>
+                </mat-option>
+              </ng-container>
+            </mat-autocomplete>
+          </mat-form-field>
+</mat-toolbar>

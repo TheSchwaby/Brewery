@@ -18,16 +18,12 @@ export class ListComponent implements OnInit {
   loading: Observable<boolean>;
   error: Error;
 
-  constructor(private store: Store<AppState>, private http: HttpClient,private router: Router) { }
+  constructor(private store: Store<AppState>, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.breweries = this.store.select(store => store.browse.list);
     this.store.dispatch(new ListBreweryAction());
 
-  }
-
-  listBreweries() {
-    this.store.dispatch(new ListBreweryAction());
   }
 
   navToId(brewery: Brewery) {

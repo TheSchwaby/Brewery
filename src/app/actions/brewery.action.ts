@@ -6,6 +6,9 @@ export enum BreweryActionTypes {
     LIST_BREWERY_SUCCESS = '[BREWERY] List success',
     LIST_BREWERY_FAILURE = '[BREWERY] List failure',
     OPEN_BREWERY = '[BREWERY] Open',
+    SEARCH_BREWERY = '[BREWERY] Search',
+    SEARCH_BREWERY_SUCCESS = '[BREWERY] Search success',
+    SEARCH_BREWERY_FAILURE = '[BREWERY] Search failure'
 }
 
 export class ListBreweryAction implements Action {
@@ -26,8 +29,26 @@ export class OpenBreweryAction implements Action {
     constructor( public payload: Brewery) {}
 }
 
+export class SearchBreweryAction implements Action {
+    readonly type = BreweryActionTypes.SEARCH_BREWERY;
+    constructor( public payload: string) {}
+}
+
+export class SearchBrewerySucessAction implements Action {
+    readonly type = BreweryActionTypes.SEARCH_BREWERY_SUCCESS;
+    constructor( public payload: Brewery) {
+    }
+}
+export class SearchBreweryFailureAction implements Action {
+    readonly type = BreweryActionTypes.SEARCH_BREWERY_FAILURE;
+    constructor( public payload: Error) {
+    }
+}
 
 export type BreweryAction = OpenBreweryAction
 | ListBreweryAction
 | ListBrewerySuccessAction
-| ListBreweryFailureAction;
+| ListBreweryFailureAction
+| SearchBreweryAction
+| SearchBrewerySucessAction
+| SearchBreweryFailureAction;
