@@ -1,0 +1,8 @@
+<div *ngIf="brewery | async as brew">
+    <h1>{{ brew.name }}</h1>
+    <p>State: {{ brew.state }}</p>
+    <p>City: {{ brew.city }}</p>
+    <p>Street: {{ brew.street }}</p>
+    <p>phone: {{ brew.phone }}</p>
+    <p>website: <a href="{{ brew.website_url }}">{{ brew.website_url }}</a></p>
+</div>

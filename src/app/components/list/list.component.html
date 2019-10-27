@@ -1,0 +1,8 @@
+<div>
+    
+    <ul>
+        <li *ngFor="let brewery of breweries | async " (click)="navToId(brewery)">
+            {{brewery.name}}
+        </li>
+    </ul>
+</div>
