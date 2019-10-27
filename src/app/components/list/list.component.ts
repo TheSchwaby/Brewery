@@ -3,9 +3,10 @@ import { Brewery } from '../../models/brewery.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../models/app-state.model';
 import { Observable } from 'rxjs';
-import { ListBreweryAction, ListBreweryFailureAction, OpenBreweryAction } from '../../actions/brewery.action';
+import { ListBreweryAction, OpenBreweryAction } from '../../actions/brewery.action';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -15,15 +16,13 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   breweries: Observable<Array<Brewery>>;
-  loading: Observable<boolean>;
-  error: Error;
-
+  displayedColumns: string[] = ['Name', 'State'];
+  dataSource = new MatTableDataSource();
   constructor(private store: Store<AppState>, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.breweries = this.store.select(store => store.browse.list);
     this.store.dispatch(new ListBreweryAction());
-
   }
 
   navToId(brewery: Brewery) {
