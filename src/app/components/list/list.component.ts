@@ -26,7 +26,6 @@ export class ListComponent implements OnInit {
   }
 
   navToId(brewery: Brewery) {
-    this.store.dispatch(new OpenBreweryAction(brewery));
     this.router.navigate(['breweries', brewery.id]);
   }
 
